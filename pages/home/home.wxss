@@ -1,0 +1,22 @@
+/* pages/home/home.wxss */
+.banner{
+    text-align: center;
+    height: 200px;
+    background-color: #07c160;
+}
+
+.banner > text{
+    color: white;
+    font-size: 64px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+}
+
+.van-button--primary{
+    font-size: 20px !important;
+    width: auto !important;
+    position: fixed;
+    right: 15px;
+    bottom:10px;
+    text-align: center !important;
+}

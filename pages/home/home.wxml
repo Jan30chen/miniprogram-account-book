@@ -1,0 +1,14 @@
+<view class="banner">
+  <text selectable="false" decode="false">23</text>
+</view>
+
+<van-cell-group wx:for="{{ account }}" wx:for-index="index" wx:for-item="item" wx:key="id">
+  <van-cell title="{{ item.detail }}" value="{{ item.type }}" label="{{ item.money }}" is-link/>
+</van-cell-group>
+  
+<van-button 
+  class="van-button--primary" 
+  bind:click="onClick"
+  type="primary" round>
+  +
+</van-button>
