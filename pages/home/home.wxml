@@ -1,9 +1,21 @@
-<view class="banner">
-  <text selectable="false" decode="false">23</text>
+<view class="text-view">
+  <text>{{ count_money }}</text>
+</view>
+<view class="text-view2">
+  <text>本月收入\n{{income}}</text>
+</view>
+<view class="text-view2">
+  <text>本月支出\n{{outcome}}</text>
 </view>
 
 <van-cell-group wx:for="{{ account }}" wx:for-index="index" wx:for-item="item" wx:key="id">
-  <van-cell title="{{ item.detail }}" value="{{ item.type }}" label="{{ item.money }}" is-link/>
+  <van-cell value="{{ item.money }}">
+    <view slot="title">
+      <van-tag class="van-cell-tag" color="{{ money_type_color[item.type] }}" size="medium">{{ money_type[item.type] }}</van-tag>
+      <view class="van-cell-text">{{ item.detail }}</view>
+    </view>
+  </van-cell>
+  <!-- <van-cell title="{{ item.detail }}" value="{{ item.type }}" label="{{ item.money }}" is-link/> -->
 </van-cell-group>
   
 <van-button 
