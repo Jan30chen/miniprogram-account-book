@@ -12,36 +12,37 @@ Page({
           {id:3, type:2, money:-100, detail:"3上衣"},
           {id:4, type:3, money:-100, detail:"4上衣"},
           {id:5, type:3, money:-100, detail:"5上衣"},
-          {id:6, type:3, money:-100, detail:"6上衣"},
+          {id:6, type:2, money:-100, detail:"6上衣"},
+          {id:6, type:1, money:-100, detail:"7不是上衣"},
         ],
-        income: 0,
-        outcome: 200,
         money_type:["衣","食","住","行"],
         money_type_color:["#1989fa","#07c160","#ee0a24","#ff976a"],
-        count_money:"",
     },
 
     onClick(event){
+      wx.navigateTo({
+        url: '../../pages/add/add',
+      });
       wx.showToast({
-        title: `点击了按钮`,
-      })
+        title: `点击了按钮？`,
+      });
     },
 
     countMoney(){
-      let money = 0;
+      let income = 0,outcome = 0;
       let account = this.data.account;
       for (let index in account) {
-        money += account[index].money;
+        let money = account[index].money;
+        if(money >= 0){
+          income += money;
+        }
+        outcome -= money;
        }
-      return money;
+       this.setData({
+         income:income,
+         outcome:outcome
+       })
     },
-
-    onChange(event) {
-        wx.showToast({
-          title: `切换到标签 ${event.detail.name+1}`,
-          icon: 'none',
-        });
-      },
 
     /**
      * 生命周期函数--监听页面加载
@@ -54,9 +55,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-      this.setData({
-        count_money: this.countMoney()
-      })
+      this.countMoney()
     },
 
     /**

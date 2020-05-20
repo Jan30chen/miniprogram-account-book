@@ -1,0 +1,30 @@
+<!--pages/add/add.wxml-->
+<van-row>
+    <van-col span="24">
+        <van-tabs active="{{ active }}" bind:change="onChange" color="#07c160">
+            <van-tab title="支出">
+                <van-field
+                    value="{{ money }}"
+                    type="digit"
+                    label="金额"
+                    placeholder="请输入金额"
+                    bind:blur="onBlur"
+                />
+                <van-field
+                    value="{{ detail }}"
+                    label="支出明细"
+                    type="textarea"
+                    placeholder="明细"
+                    autosize
+                />
+            </van-tab>
+            
+            <van-tab title="收入">收入</van-tab>
+        </van-tabs>
+    </van-col>    
+
+    <van-col span="24">
+        <van-button class="van-button--primary" bind:click="onClick" type="primary" plain>清空</van-button>
+        <van-button class="van-button--primary" bind:click="onClick" type="primary">提交</van-button>
+    </van-col>
+</van-row>

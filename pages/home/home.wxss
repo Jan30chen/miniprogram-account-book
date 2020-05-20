@@ -37,23 +37,21 @@
     bottom:20rpx;
     text-align: center !important;
 }
-
+/* 
 .van-cell-text{
     font-weight: bold !important;
     font-size: 34rpx !important;
-    line-height: 100rpx;
     float: left !important;
-} 
-
+} */
+/* 
 .van-cell-tag{
-    line-height: 100rpx;
     float: left !important;
     margin-right: 30rpx;
-}
-
+} */
+/* 
 .van-cell__value{
     line-height: 100rpx;
     font-size: 40rpx !important;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: red !important;
-}
+} */

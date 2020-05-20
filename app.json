@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/add/add",
         "pages/home/home",
         "pages/index/index",
         "pages/logs/logs"
@@ -11,18 +12,18 @@
         "navigationBarTextStyle": "black"
     },
     "tabBar": {
-        "backgroundColor":"#ffffff",
-        "color":"#979797",
-        "selectedColor":"#ff7200",
-        "borderStyle":"black",
+        "backgroundColor": "#ffffff",
+        "color": "#979797",
+        "selectedColor": "#07c160",
+        "borderStyle": "black",
         "list": [
             {
                 "pagePath": "pages/home/home",
-                "text": "我的"
+                "text": "账本"
             },
             {
                 "pagePath": "pages/index/index",
-                "text": "首页"
+                "text": "统计"
             }
         ]
     },

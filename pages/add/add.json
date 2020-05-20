@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText":"记账",
+  "usingComponents": {
+    "van-row": "../../dist/row/index",
+    "van-col": "../../dist/col/index",
+    "van-tab": "../../dist/tab/index",
+    "van-tabs": "../../dist/tabs/index",
+    "van-field": "../../dist/field/index",
+    "van-button": "../../dist/button/index"
+  }
+}
