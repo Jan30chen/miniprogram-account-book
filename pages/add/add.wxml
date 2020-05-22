@@ -1,30 +1,143 @@
 <!--pages/add/add.wxml-->
 <van-row>
     <van-col span="24">
-        <van-tabs active="{{ active }}" bind:change="onChange" color="#07c160">
+        <van-tabs active="{{ active }}" bind:change="onChangeTabs" color="#07c160">
             <van-tab title="支出">
-                <van-field
+                 <van-field
                     value="{{ money }}"
                     type="digit"
-                    label="金额"
+                    label="支出金额"
                     placeholder="请输入金额"
                     bind:blur="onBlur"
+                    required focus
                 />
+
                 <van-field
-                    value="{{ detail }}"
+                    model:value="{{ date }}"
+                    label="支出日期"
+                    placeholder="选择日期"
+                    required center readonly
+                >
+                    <van-button 
+                        class="van-button-small" 
+                        slot="button" size="small" 
+                        type="primary"
+                        bind:click="onDisplayCale"
+                    >
+                        选择日期
+                    </van-button>
+                </van-field>
+                <van-calendar 
+                    show="{{ show_cale }}" 
+                    bind:close="onCloseCale" 
+                    bind:confirm="onConfirmCale" 
+                    default-date="{{ max_date }}"
+                    min-date="{{ min_date }}"
+                    max-date="{{ max_date }}"
+                    required 
+                />
+                
+                 <van-field
+                    model:value="{{ kind }}"
+                    label="收入类型"
+                    placeholder="选择类型"
+                    readonly center
+                >
+                    <van-button 
+                        class="van-button-small" 
+                        slot="button" size="small" 
+                        type="primary"
+                        bind:click="onDisplayeActionSheet"
+                    >
+                        选择类型
+                    </van-button>
+                </van-field>
+                <van-action-sheet
+                    show="{{ show_action_sheet }}"
+                    actions="{{ outcome_actions }}"
+                    bind:close="onCloseActionSheet"
+                    bind:select="onSelectActionSheet"
+                />
+
+                <van-field
+                    model:value="{{ detail }}"
                     label="支出明细"
-                    type="textarea"
                     placeholder="明细"
-                    autosize
                 />
             </van-tab>
             
-            <van-tab title="收入">收入</van-tab>
+            <van-tab title="收入">
+                 <van-field
+                    value="{{ money }}"
+                    type="digit"
+                    label="收入金额"
+                    placeholder="请输入金额"
+                    bind:blur="onBlur"
+                    required focus
+                />
+
+                <van-field
+                    model:value="{{ date }}"
+                    label="收入日期"
+                    placeholder="选择日期"
+                    required center readonly
+                >
+                    <van-button 
+                        class="van-button-small" 
+                        slot="button" size="small" 
+                        type="primary"
+                        bind:click="onDisplayCale"
+                    >
+                        选择日期
+                    </van-button>
+                </van-field>
+                <van-calendar 
+                    show="{{ show_cale }}" 
+                    bind:close="onCloseCale" 
+                    bind:confirm="onConfirmCale" 
+                    default-date="{{ max_date }}"
+                    min-date="{{ min_date }}"
+                    max-date="{{ max_date }}"
+                    required 
+                />
+                
+                 <van-field
+                    model:value="{{ kind }}"
+                    label="收入类型"
+                    placeholder="点击选择类型"
+                    readonly center
+                >
+                    <van-button 
+                        class="van-button-small" 
+                        slot="button" size="small" 
+                        type="primary"
+                        bind:click="onDisplayeActionSheet"
+                    >
+                        选择类型
+                    </van-button>
+                </van-field>
+                <van-action-sheet
+                    show="{{ show_action_sheet }}"
+                    actions="{{ income_actions }}"
+                    bind:close="onCloseActionSheet"
+                    bind:select="onSelectActionSheet"
+                />
+
+                <van-field
+                    model:value="{{ detail }}"
+                    label="收入明细"
+                    placeholder="明细"
+                />
+            </van-tab>
         </van-tabs>
     </van-col>    
 
-    <van-col span="24">
-        <van-button class="van-button--primary" bind:click="onClick" type="primary" plain>清空</van-button>
-        <van-button class="van-button--primary" bind:click="onClick" type="primary">提交</van-button>
+    <van-col span="24" style="bottom:'10px'">
+        <van-col span="12">
+            <van-button class="van-button--primary" bind:click="onClick" type="primary" plain>清空</van-button>
+        </van-col>
+        <van-col span="12">
+            <van-button class="van-button--primary" bind:click="onClick" type="primary">提交</van-button>
+        </van-col>
     </van-col>
 </van-row>

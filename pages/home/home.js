@@ -23,9 +23,6 @@ Page({
       wx.navigateTo({
         url: '../../pages/add/add',
       });
-      wx.showToast({
-        title: `点击了按钮？`,
-      });
     },
 
     countMoney(){
