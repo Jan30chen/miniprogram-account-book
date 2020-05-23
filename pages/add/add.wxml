@@ -132,7 +132,7 @@
         </van-tabs>
     </van-col>    
 
-    <van-col span="24" style="bottom:'10px'">
+    <van-col class="van-col-bottom" span="24">
         <van-col span="12">
             <van-button class="van-button--primary" bind:click="onClick" type="primary" plain>清空</van-button>
         </van-col>

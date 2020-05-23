@@ -6,3 +6,7 @@
 .van-button-small > button{
     width: auto !important;
 }
+
+.van-col-bottom > view{
+    margin-top: 100rpx !important;
+}

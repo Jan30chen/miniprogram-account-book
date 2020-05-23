@@ -1,0 +1,4 @@
+/* pages/info/info.wxss */
+.van-col-bottom > view{
+    margin-top: 100rpx !important;
+}
