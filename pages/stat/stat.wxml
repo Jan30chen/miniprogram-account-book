@@ -1,0 +1,11 @@
+<!--pages/stat/stat.wxml-->
+<van-tabs active="{{ active }}" bind:change="onChangeTab">
+  <van-tab title="支出统计">
+    <canvas canvas-id="outcome_column_canvas" disable-scroll="true" class="canvas" />
+    <canvas canvas-id="outcome_pie_canvas" disable-scroll="true" class="canvas" />
+  </van-tab>
+  <van-tab title="收入统计">
+    <canvas canvas-id="income_column_canvas" disable-scroll="true" class="canvas" />
+    <canvas canvas-id="income_pie_canvas" disable-scroll="true" class="canvas" />
+  </van-tab>
+</van-tabs>
