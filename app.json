@@ -1,7 +1,7 @@
 {
     "pages": [
-        "pages/stat/stat",
         "pages/home/home",
+        "pages/stat/stat",
         "pages/info/info",
         "pages/add/add",
         "pages/index/index",
@@ -24,7 +24,7 @@
                 "text": "账本"
             },
             {
-                "pagePath": "pages/index/index",
+                "pagePath": "pages/stat/stat",
                 "text": "统计"
             }
         ]

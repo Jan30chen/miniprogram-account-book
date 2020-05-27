@@ -39,7 +39,7 @@
                 
                  <van-field
                     model:value="{{ kind }}"
-                    label="收入类型"
+                    label="支出类型"
                     placeholder="选择类型"
                     readonly center
                 >
@@ -134,10 +134,10 @@
 
     <van-col class="van-col-bottom" span="24">
         <van-col span="12">
-            <van-button class="van-button--primary" bind:click="onClick" type="primary" plain>清空</van-button>
+            <van-button class="van-button--primary" bind:click="onContinueSubmit" type="primary" plain>继续提交</van-button>
         </van-col>
         <van-col span="12">
-            <van-button class="van-button--primary" bind:click="onClick" type="primary">提交</van-button>
+            <van-button class="van-button--primary" bind:click="onSubmit" type="primary">提交</van-button>
         </van-col>
     </van-col>
 </van-row>

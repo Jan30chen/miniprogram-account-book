@@ -16,7 +16,8 @@
       <van-tag class="van-cell-tag" size="medium" color="{{ money_type_color[item.type] }}">
         {{ money_type[item.type] }}
       </van-tag>
-      <view class="van-cell-text">{{ item.detail }}</view>
+      <view class="van-cell-text van-cell-text-top">{{ item.detail }}</view>
+      <view class="van-cell-text van-cell-text-bottom">{{ item.date }}</view>
     </view>
   </van-cell>
 </van-cell-group>
