@@ -6,14 +6,7 @@ Page({
      */
     data: {
         active: 2,
-        account: [
-          { id:1, type:0, money:-100, detail:"1上衣", date:new Date(2020, 0, 25).toLocaleDateString() },
-          { id:2, type:1, money:-100, detail:"2上衣", date:new Date(2020, 0, 25).toLocaleDateString() },
-          { id:4, type:3, money:-100, detail:"4上衣", date:new Date(2020, 0, 25).toLocaleDateString() },
-          { id:5, type:3, money:-100, detail:"5上衣", date:new Date(2020, 0, 25).toLocaleDateString() },
-          { id:6, type:2, money:-100, detail:"6上衣", date:new Date(2020, 0, 25).toLocaleDateString() },
-          { id:6, type:1, money:-100, detail:"7不是上衣", date:new Date(2020, 0, 25).toLocaleDateString() },
-        ],
+        account: undefined,
         money_type:["衣","食","住","行"],
         money_type_color:["#1989fa","#07c160","#ee0a24","#ff976a"],
     },
@@ -22,6 +15,19 @@ Page({
       wx.navigateTo({
         url: '../../pages/add/add',
       });
+    },
+
+    getData(){
+      let _account = [
+        { id:1, type:0, money:-100, detail:"1上衣", date:"2020.1.4" },
+        { id:2, type:1, money:-100, detail:"2上衣", date:"2020.1.4"  },
+        { id:4, type:3, money:-100, detail:"4上衣", date:"2020.1.4"  },
+        { id:5, type:3, money:-100, detail:"5上衣", date:"2020.1.4"  },
+        { id:6, type:2, money:-100, detail:"6上衣", date:"2020.1.4"  },
+        { id:6, type:1, money:-100, detail:"7不是上衣", date:"2020.1.4"  },
+      ];
+
+      this.setData({ account:_account });
     },
 
     countMoney(){
@@ -44,7 +50,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      this.getData()
     },
 
     /**
