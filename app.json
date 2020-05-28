@@ -1,9 +1,9 @@
 {
     "pages": [
         "pages/home/home",
+        "pages/add/add",
         "pages/stat/stat",
         "pages/info/info",
-        "pages/add/add",
         "pages/index/index",
         "pages/logs/logs"
     ],
@@ -18,8 +18,7 @@
         "color": "#979797",
         "selectedColor": "#07c160",
         "borderStyle": "black",
-        "list": [
-            {
+        "list": [{
                 "pagePath": "pages/home/home",
                 "text": "账本"
             },

@@ -1,34 +1,36 @@
 // pages/add/add.js
-Page({
+import Toast from '../../dist/toast/toast';
 
-    /**
-     * 页面的初始数据
-     */
+Page({
     data: {
-        active: 0,
+        if_income: 0,
+
         date: undefined,
         money: undefined,
         detail: undefined,
-        kind: undefined,
+        kind: "其他",
 
         show_cale: false,
-        min_date: Number(new Date(2020, 0, 1)),
-        max_date: Number(new Date()),
+        min_date: new Date(2020, 0, 1).getTime(),
+        max_date: new Date().getTime(),
 
         show_action_sheet: false,
         outcome_actions: [
+            { name: '其他' },
             { name: '衣' },
             { name: '食' },
             { name: '住' },
             { name: '行' },
         ],
         income_actions: [
+            { name: '其他' },
             { name: '收入1' },
             { name: '收入2' },
             { name: '收入3' },
             { name: '收入4' },
         ],
     },
+
     // 上拉菜单相关函数
     onDisplayeActionSheet(){
         this.setData({ show_action_sheet: true });
@@ -37,9 +39,10 @@ Page({
         this.setData({ show_action_sheet: false });
       },
     onSelectActionSheet(event) {
-        this.setData({ kind:event.detail.name })
-        console.log(event.detail);
+        this.setData({ kind: event.detail.name })
+        // console.log(event.detail);
     },
+
     // 日历相关函数
     onDisplayCale() {
         console.log("display!");
@@ -51,85 +54,59 @@ Page({
     onConfirmCale(event) {
         this.setData({
             show_cale: false,
-            date: this.formatDate(event.detail),
+            date: (function(date){
+                date = new Date(date);
+                return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
+            })(event.detail),
         });
     },
-    formatDate(date) {
-        date = new Date(date);
-        return `${date.getMonth() + 1}月${date.getDate()}日`;
-    },
     
+    // 输入框失焦
     onBlur(event){
         // let money_str = event.detail.value;
         // let money = Number( money_str.slice(0, money_str.indexOf('.')+3) );
-        let money = Math.round(event.detail.value * 100) / 100;
-        if(money !== NaN){
-            this.setData({ money: money })
+        let _money = Math.round(event.detail.value * 100) / 100;
+        if( _money !== NaN ){
+            this.setData({ money: this.data.if_income?(_money):-(_money) })
         }
     },
+
     // 标签页切换
     onChangeTabs(event){
         this.setData({
             date: null,
             money: null,
             detail: null,
-            kind: null,
-        })
+            kind: "其他",
+        });
+        this.setData({ if_income: this.data.if_income?0:1 })
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-
+    // 提交数据
+    canSubmit(){
+        if( !this.data.money ){
+            Toast.fail("金额不能为0")
+            return false;
+        } else if( !this.data.date ){
+            Toast.fail('日期未填写！');
+            return false;
+        } else{
+            Toast.success('提交成功！');
+            return true
+        }
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+    onSubmit(){
+        if(this.canSubmit())
+            wx.navigateBack();
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-        // this.setData(({ kind:this.data.actions[0].name }))
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+    onContinueSubmit(){
+        if(this.canSubmit()){
+            this.setData({
+                date: null,
+                money: null,
+                detail: null,
+                kind: "其他",
+            })
+        }
     }
 })

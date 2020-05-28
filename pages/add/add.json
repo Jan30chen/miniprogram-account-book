@@ -21,6 +21,8 @@
     "van-cell": "../../dist/cell/index",
     "van-cell-group": "../../dist/cell-group/index",
 
-    "van-action-sheet": "../../dist/action-sheet/index"
+    "van-action-sheet": "../../dist/action-sheet/index",
+
+    "van-toast": "../../dist/toast/index"
   }
 }

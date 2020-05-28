@@ -1,7 +1,7 @@
 <!--pages/add/add.wxml-->
 <van-row>
     <van-col span="24">
-        <van-tabs active="{{ active }}" bind:change="onChangeTabs" color="#07c160">
+        <van-tabs bind:change="onChangeTabs" color="#07c160">
             <van-tab title="支出">
                  <van-field
                     value="{{ money }}"
@@ -141,3 +141,5 @@
         </van-col>
     </van-col>
 </van-row>
+<van-toast id="van-toast" />
+
