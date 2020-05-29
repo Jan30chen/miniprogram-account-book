@@ -1,0 +1,12 @@
+/* pages/add/add.wxss */
+.item-van-button > button{
+    width: auto !important;
+}
+
+.van-button-small > button{
+    width: auto !important;
+}
+
+.van-col-bottom > view{
+    margin-top: 100rpx !important;
+}

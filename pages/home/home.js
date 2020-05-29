@@ -7,8 +7,8 @@ Page({
     data: {
         active: 2,
         account: undefined,
-        money_type:["衣","食","住","行"],
-        money_type_color:["#1989fa","#07c160","#ee0a24","#ff976a"],
+        money_type: ["衣","食","住","行","收入1","收入2","收入3","收入4"],
+        money_type_color:  ["#1989fa","#07c160","#ee0a24","#ff976a","#1989fa","#07c160","#ee0a24","#ff976a"],
     },
 
     onClick(event){
@@ -19,12 +19,12 @@ Page({
 
     getData(){
       let _account = [
-        { id:1, type:0, money:-100, detail:"1上衣", date:"2020.1.4" },
-        { id:2, type:1, money:-100, detail:"2上衣", date:"2020.1.4"  },
-        { id:4, type:3, money:-100, detail:"4上衣", date:"2020.1.4"  },
-        { id:5, type:3, money:-100, detail:"5上衣", date:"2020.1.4"  },
-        { id:6, type:2, money:-100, detail:"6上衣", date:"2020.1.4"  },
-        { id:6, type:1, money:-100, detail:"7不是上衣", date:"2020.1.4"  },
+        { id:1, type:4, money:100, detail:"打工", date:"2020.1.4" },
+        { id:2, type:1, money:-23, detail:"吃饭", date:"2020.1.4"  },
+        { id:4, type:3, money:-300, detail:"玩", date:"2020.1.4"  },
+        { id:5, type:3, money:-500, detail:"买衣服", date:"2020.1.4"  },
+        { id:6, type:6, money:1000, detail:"打工", date:"2020.1.4"  },
+        { id:6, type:1, money:-230, detail:"聚餐", date:"2020.1.4"  },
       ];
 
       this.setData({ account:_account });
@@ -37,8 +37,9 @@ Page({
         let money = account[index].money;
         if(money >= 0){
           income += money;
+        } else{
+          outcome += money;
         }
-        outcome -= money;
        }
        this.setData({
          income:income,

@@ -3,8 +3,6 @@ import Toast from '../../dist/toast/toast';
 
 Page({
     data: {
-        if_income: 0,
-
         date: undefined,
         money: undefined,
         detail: undefined,
@@ -32,6 +30,14 @@ Page({
     },
 
     onLoad(option){
+        let _item = JSON.parse(option.item)
+        this.setData({
+            date: _item.date,
+            money: _item.money,
+            detail: _item.detail,
+            type: _item.type
+        })
+
     },
 
     // 上拉菜单相关函数
@@ -70,20 +76,10 @@ Page({
         // let money = Number( money_str.slice(0, money_str.indexOf('.')+3) );
         let _money = Math.round(event.detail.value * 100) / 100;
         if( _money !== NaN ){
-            this.setData({ money: this.data.if_income?(_money):-(_money) })
+            this.setData({ money: _money })
         }
     },
 
-    // 标签页切换
-    onChangeTabs(event){
-        this.setData({
-            date: null,
-            money: null,
-            detail: null,
-            type: "其他",
-        });
-        this.setData({ if_income: this.data.if_income?0:1 })
-    },
 
     // 提交数据
     canSubmit(){
@@ -102,14 +98,14 @@ Page({
         if(this.canSubmit())
             wx.navigateBack();
     },
-    onContinueSubmit(){
-        if(this.canSubmit()){
-            this.setData({
-                date: null,
-                money: null,
-                detail: null,
-                type: "其他",
-            })
-        }
-    }
+    // onContinueSubmit(){
+    //     if(this.canSubmit()){
+    //         this.setData({
+    //             date: null,
+    //             money: null,
+    //             detail: null,
+    //             type: "其他",
+    //         })
+    //     }
+    // }
 })

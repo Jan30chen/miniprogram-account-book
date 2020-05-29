@@ -38,7 +38,7 @@
                 />
                 
                  <van-field
-                    model:value="{{ kind }}"
+                    model:value="{{ type }}"
                     label="支出类型"
                     placeholder="选择类型"
                     readonly center
@@ -102,7 +102,7 @@
                 />
                 
                  <van-field
-                    model:value="{{ kind }}"
+                    model:value="{{ item.type }}"
                     label="收入类型"
                     placeholder="点击选择类型"
                     readonly center

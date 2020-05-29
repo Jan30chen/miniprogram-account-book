@@ -1,6 +1,6 @@
 <view>
   <view class="text-view">
-    <text>{{ income-outcome }}</text>
+    <text>{{ income+outcome }}</text>
   </view>
   <view class="text-view2">
     <text>本月收入\n{{ income }}</text>

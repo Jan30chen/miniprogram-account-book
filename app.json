@@ -2,6 +2,7 @@
     "pages": [
         "pages/home/home",
         "pages/add/add",
+        "pages/edit/edit",
         "pages/stat/stat",
         "pages/info/info",
         "pages/index/index",

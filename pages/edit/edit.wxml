@@ -1,0 +1,71 @@
+<!--pages/add/add.wxml-->
+<van-row>
+    <van-col span="24">
+        <van-field
+            value="{{ money }}"
+            type="digit"
+            label="金额"
+            placeholder="请输入金额"
+            bind:blur="onBlur"
+            required focus
+        />
+
+        <van-field
+            model:value="{{ date }}"
+            label="日期"
+            placeholder="选择日期"
+            required center readonly
+        >
+            <van-button 
+                class="van-button-small" 
+                slot="button" size="small" 
+                type="primary"
+                bind:click="onDisplayCale"
+            >
+                选择日期
+            </van-button>
+        </van-field>
+        <van-calendar 
+            show="{{ show_cale }}" 
+            bind:close="onCloseCale" 
+            bind:confirm="onConfirmCale" 
+            default-date="{{ max_date }}"
+            min-date="{{ min_date }}"
+            max-date="{{ max_date }}"
+            required 
+        />
+        
+            <van-field
+            model:value="{{ type }}"
+            label="类型"
+            placeholder="选择类型"
+            readonly center
+        >
+            <van-button 
+                class="van-button-small" 
+                slot="button" size="small" 
+                type="primary"
+                bind:click="onDisplayeActionSheet"
+            >
+                选择类型
+            </van-button>
+        </van-field>
+        <van-action-sheet
+            show="{{ show_action_sheet }}"
+            actions="{{ outcome_actions }}"
+            bind:close="onCloseActionSheet"
+            bind:select="onSelectActionSheet"
+        />
+
+        <van-field
+            model:value="{{ detail }}"
+            label="明细"
+            placeholder="明细"
+        />
+    </van-col> 
+    <van-col class="van-col-bottom" span="12" offset="6">
+        <van-button class="van-button--primary" bind:click="onSubmit" type="primary">提交</van-button>
+    </van-col>
+</van-row>
+<van-toast id="van-toast" />
+

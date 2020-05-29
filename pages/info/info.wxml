@@ -1,18 +1,18 @@
 <!--pages/info/info.wxml-->
 <van-cell-group title="账单明细">
     <van-cell title="编号" value="{{ item_id }}" size="large"/>
-    <van-cell title="类型" value="内容" size="large"/>
-    <van-cell title="金额" value="内容" size="large"/>
-    <van-cell title="日期" value="内容" size="large"/>
-    <van-cell title="标签" value="内容" size="large"/>
-    <van-cell title="明细" value="内容" size="large"/>
+    <van-cell title="类型" value="{{ item.type }}" size="large"/>
+    <van-cell title="金额" value="{{ item.money }}" size="large"/>
+    <van-cell title="日期" value="{{ item.date }}" size="large"/>
+    <!-- <van-cell title="标签" value="{{ item. }}" size="large"/> -->
+    <van-cell title="明细" value="{{ item.detail }}" size="large"/>
 </van-cell-group>
 
 <van-col class="van-col-bottom" span="24">
     <van-col span="12">
         <van-button 
             class="van-button--primary" 
-            bind:click="onClick"
+            bind:click="onDel"
             type="primary" plain
             >
             删除记录
@@ -21,7 +21,7 @@
     <van-col span="12">
         <van-button 
             class="van-button--primary" 
-            bind:click="onClick" 
+            bind:click="onEdit" 
             type="primary"
         >
             编辑记录
