@@ -6,48 +6,41 @@ Page({
         window_width: 375,
         active: 0,
         checked: false,
-        
-        outcome_column_serie: { "一月":11123, "二月":2000, "三月":323, "四月":4333, "五月":5000 },
-        outcome_pie_series: [
-            {   name: '衣', data: 15,   }, 
-            {   name: '食', data: 35,   }, 
-            {   name: '行', data: 35,   }, 
-            {   name: '住', data: 78,   }
-        ],
-        
-        
-        income_column_serie: { "一月":20000, "二月":20000, "三月":20000, "四月":20000, "五月":20000 },
-        income_pie_series: [
-            {   name: '收入1', data: 234,   }, 
-            {   name: '收入2', data: 323,   }, 
-            {   name: '收入3', data: 3534,   }, 
-            {   name: '收入4', data: 1565,   }
-        ],    
     },
     
     onLoad(){
+        this.getData(); // 获取数据
+    },
+    
+    drawChart(){
         try {
             this.setData({ window_width: wx.getSystemInfoSync().windowWidth})
         } catch (e) {          
             console.error('getSystemInfoSync failed!');
         }
+        this.getColumnChart();
+        this.getPieChart();
     },
 
-    onShow(){
-        this.getIncomeChart();
-        this.getOutcomeChart();
-    },
+    getData(){
+        const that = this;
 
-    countData(){
-        let _account = [
-            { id:1, type:4, money:100, detail:"打工", date:"2020.1.4" },
-            { id:2, type:1, money:-23, detail:"吃饭", date:"2020.1.4"  },
-            { id:4, type:3, money:-300, detail:"玩", date:"2020.1.4"  },
-            { id:5, type:3, money:-500, detail:"买衣服", date:"2020.1.4"  },
-            { id:6, type:6, money:1000, detail:"打工", date:"2020.1.4"  },
-            { id:6, type:1, money:-230, detail:"聚餐", date:"2020.1.4"  },
-        ]
-    },
+        wx.request({
+          url: 'https://example.com/ajax/stat',
+          dataType: 'json',
+          success(res) {
+            that.setData({  
+                outcome_column_serie: res.data.outcome_column_serie,
+                outcome_pie_series: res.data.outcome_pie_series,
+                income_column_serie: res.data.income_column_serie,
+                income_pie_series: res.data.income_pie_series,
+            });
+            that.drawChart();
+          },  fail(err){
+            console.error(err.errMsg);
+          }
+        })
+      },
 
     onChangeSwitch({ detail }) {
         this.setData({ checked: detail });
@@ -58,9 +51,11 @@ Page({
         // 留白
     },
 
-    getOutcomeChart() {      
-        let column_serie = this.data.outcome_column_serie;
+    getColumnChart() {      
         let window_width = this.data.window_width;
+        let _outcome_column_serie = this.data.outcome_column_serie;
+        let _income_column_serie = this.data.income_column_serie;
+        console.log(_outcome_column_serie);
 
         new wxCharts({
             canvasId: 'outcome_column_canvas',
@@ -68,15 +63,15 @@ Page({
             animation: true,
             width: window_width,
             height: window_width,
-            categories: Object.keys(column_serie),
+            categories: Object.keys(_outcome_column_serie),
             series: [
                 {
                     name: '每月支出对比',
-                    data: Object.values(this.data.outcome_column_serie),
+                    data: Object.values(_outcome_column_serie),
                 },
                 {
                     name: '每月收入对比',
-                    data: Object.values(this.data.income_column_serie),
+                    data: Object.values(_income_column_serie),
                     // format: function (val) {
                     //     return val.toFixed(2);
                     // }
@@ -94,7 +89,12 @@ Page({
                 }
             },
         });
+    },
 
+    getPieChart() {      
+        let window_width = this.data.window_width;
+        let _outcome_pie_series = this.data.outcome_pie_series;
+        let _income_pie_series = this.data.income_pie_series;
 
         new wxCharts({
             animation: true,
@@ -103,37 +103,8 @@ Page({
             width: window_width,
             height: window_width,
             dataLabel: true,
-            series: this.data.outcome_pie_series,
+            series: _outcome_pie_series,
         });
-
-    },
-
-    getIncomeChart() {      
-        let column_serie = this.data.income_column_serie;
-        let window_width = this.data.window_width;
-
-        new wxCharts({
-            canvasId: 'income_column_canvas',
-            type: 'column',
-            animation: true,
-            width: window_width,
-            height: window_width,
-            categories: Object.keys(column_serie),
-            series: [{
-                name: '每月支出对比',
-                data: Object.values(column_serie),
-                // format: function (val) {
-                //     return val.toFixed(2);
-                // }
-            }],
-            yAxis: {
-                min: 0
-            },
-            xAxis: {
-                disableGrid: false,
-            },
-        });
-
 
         new wxCharts({
             animation: true,
@@ -142,7 +113,7 @@ Page({
             width: window_width,
             height: window_width,
             dataLabel: true,
-            series: this.data.income_pie_series,
+            series: _income_pie_series,
         });
 
     },

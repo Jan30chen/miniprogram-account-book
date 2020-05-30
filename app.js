@@ -34,6 +34,14 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    account: [
+      { id:1, type:4, money:100, detail:"打工", date:"2020.1.4" },
+      { id:2, type:1, money:-23, detail:"吃饭", date:"2020.1.4"  },
+      { id:4, type:3, money:-300, detail:"玩", date:"2020.1.4"  },
+      { id:5, type:3, money:-500, detail:"买衣服", date:"2020.1.4"  },
+      { id:6, type:6, money:1000, detail:"打工", date:"2020.1.4"  },
+      { id:6, type:1, money:-230, detail:"聚餐", date:"2020.1.4"  },
+    ],
   }
 })

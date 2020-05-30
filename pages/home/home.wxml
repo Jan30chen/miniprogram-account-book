@@ -13,6 +13,9 @@
 <van-cell-group wx:for="{{ account }}" wx:for-index="index" wx:for-item="item" wx:key="id">
   <van-cell value="{{ item.money }}" url="/pages/info/info?item_id={{ item.id }}" center>
     <view slot="title">
+     <van-tag class="van-cell-tag" size="medium" color='{{ item.money<0?"#07c160":"#f7a35c" }}'>
+        {{ item.money<0?"支出":"收入" }}
+      </van-tag>
       <van-tag class="van-cell-tag" size="medium" color="{{ money_type_color[item.type] }}">
         {{ money_type[item.type] }}
       </van-tag>
